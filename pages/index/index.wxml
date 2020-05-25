@@ -1,0 +1,66 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="headline">
+    <image class="zjut-avatar" src="../images/zjut-avatar.png"></image>
+  </view>
+  <view class="content">
+    <view wx:if="{{ currentPhotoFrames }}" class="result" hover-class="none" hover-stop-propagation="false">
+       <image  class="userinfo-avatar" src="{{ currentPhotoFrames }}"mode="aspectFit"></image>
+       <image  class="selectedImage" src="{{ selectedImage }}" mode="aspectFill"></image>
+    </view>
+    <image wx:elif="{{ selectedImage }}" class="userinfo-avatar" 
+           src="{{ selectedImage }}"mode="cover">
+    </image>
+    <block wx:else>
+      <view class="userinfo-avatar avatar-cover">
+        <text class="tip">请点击下方按钮操作</text>
+      </view>
+    </block>
+  </view>
+  <view class="operate">
+    <block wx:if="{{ todo }}">
+      <scroll-view class="scroll-box" scroll-x="true">
+         <block wx:for="{{ photoFrames }}" wx:key="key" >
+            <view class="photo-box">
+              <image class="photo" src="{{ item }}" data-src="{{ item }}" bindtap="showPhotoFrames"></image>
+            </view>
+         </block>
+      </scroll-view>
+      <view class="more-box">
+        <text class="more">
+            {{ '<' }}  往左滑显示更多
+        </text>
+      </view>
+       <view class="btn-group">
+        <view class="btn-box">
+          <button class="btn" bindtap="saveImage" hover-class="none">保存</button>
+        </view>
+        <view class="btn-box">
+          <button class="btn" bindtap="setTodo" hover-class="none">返回</button>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="btn-group">
+        <view class="btn-box">
+          <button class="btn" hover-class="none" 
+                  open-type="getUserInfo" bindtap="getWechatAvatar">
+                  微信头像
+          </button>
+        </view>
+        <view class="btn-box">
+          <button class="btn" hover-class="none" bindtap="getLocalPhoto">相册照片</button>
+        </view>
+      </view>
+      <view class="btn-group">
+        <view class="btn-box">
+          <button class="btn btn-fix" hover-class="none" bindtap="setTodo">开始制作头像</button>
+        </view>
+      </view>
+    </block>
+   
+  </view>
+  <view class="canvas-box">
+    <canvas width="180" height="180" style='width:180px; height:180px;' canvas-id="avatarCanvas" ></canvas>
+  </view>
+</view>

@@ -1,0 +1,147 @@
+/**index.wxss**/
+
+.headline {
+  width: 100%;
+  height: 200rpx;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.zjut-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  width: 100%;
+  height: 400rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.result {
+  width: 100%;
+  height: 400rpx;
+  line-height: 400rpx;
+  position: relative;
+  text-align: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+
+.selectedImage {
+  z-index: -1;
+  border-radius: 50%;
+  width: 250rpx;
+  height: 250rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.userinfo-avatar {
+  width: 360rpx;
+  height: 360rpx;
+}
+
+.avatar-cover {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip {
+  color: rgba(246, 198, 88);
+  font-weight: bold;
+}
+
+.operate {
+  width: 100%;
+  height: 600rpx;
+  line-height: 600rpx;
+  box-sizing: border-box;
+  padding: 100rpx 0;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.btn-box {
+  display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.btn {
+  border-radius: 50rpx;
+  display: flex;
+  flex-basis: 70%;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20rpx 10rpx;
+}
+
+.btn-fix {
+  flex-basis: 88%;
+}
+
+.scroll-box {
+  height: 200rpx;
+  line-height: 200rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.photo-box {
+  width: 160rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  margin: 20rpx 14rpx;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.photo {
+  width: 160rpx;
+  height: 160rpx;
+  display: inline-block;
+}
+
+.more-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  margin-bottom: 34rpx;
+  padding: 0 18rpx;
+  color: #104E6C;
+}
+
+.more {
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 28rpx;
+}
+
+.canvas-box {
+ position: fixed;
+ left: 1000rpx;
+}
