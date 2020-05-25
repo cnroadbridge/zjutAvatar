@@ -18,6 +18,35 @@
 
 ## 功能展示
 
+首页
+
+<img src="images/show-1.jpg" width=35% height=35% />
+
+点击获取头像
+
+<img src="images/show-2.jpg" width=35% height=35% />
+
+点击相册照片
+
+<img src="images/show-3.jpg" width=35% height=35% />
+
+相应相框选择
+
+<img src="images/show-4.jpg" width=35% height=35% />
+
+结果一
+
+<img src="images/show-5.jpg" width=60% height=50% />
+
+结果二
+
+<img src="images/show-6.jpg" width=60% height=50% />
+
+
+演示
+
+![](images/show.gif)
+
 ## 知识点梳理
 
 ### 一些标签

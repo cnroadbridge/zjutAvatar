@@ -52,7 +52,8 @@
 }
 
 .avatar-cover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(235,233,233, .9);
+  border-radius: 16rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -60,8 +61,7 @@
 }
 
 .tip {
-  color: rgba(246, 198, 88);
-  font-weight: bold;
+  color: rgb(157,156,156);
 }
 
 .operate {
@@ -90,6 +90,9 @@
 
 .btn {
   border-radius: 50rpx;
+  background-color: rgba(223,223,223, .8);
+  color: rgba(141,139,139);
+  font-weight: normal;
   display: flex;
   flex-basis: 70%;
   flex-direction: row;
@@ -99,12 +102,14 @@
 
 .btn-fix {
   flex-basis: 88%;
+  background-color: rgba(73,123,169);
+  color: #fff;
 }
 
 .scroll-box {
   height: 200rpx;
   line-height: 200rpx;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgb(238,233,233);
   white-space: nowrap;
 }
 
@@ -114,7 +119,7 @@
   line-height: 160rpx;
   margin: 20rpx 14rpx;
   display: inline-block;
-  background-color: #fff;
+  background-color: rgb(238,233,233);
 }
 
 .photo {

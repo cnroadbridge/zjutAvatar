@@ -30,14 +30,8 @@ Page({
         image: '',
         duration: 1500,
         mask: false,
-        success: (result) => {
-
-        },
-        fail: () => {},
-        complete: () => {}
       });
     }
-
   },
   getWechatAvatar: function () {
     if (this.data.hasUserInfo) {
@@ -83,8 +77,6 @@ Page({
           selectedImage: result.tempFilePaths[0]
         });
       },
-      fail: () => {},
-      complete: () => {}
     });
   },
   showPhotoFrames: function (e) {
@@ -123,7 +115,7 @@ Page({
                 },
                 fail: function (res) {
                   console.log(res);
-                },
+                }
               });
             }
           });
@@ -153,7 +145,7 @@ Page({
             },
             fail: function (res) {
               console.log(res);
-            },
+            }
           });
         }, 100);
       }
@@ -164,14 +156,8 @@ Page({
         image: '',
         duration: 1500,
         mask: false,
-        success: (result) => {
-
-        },
-        fail: () => {},
-        complete: () => {}
       });
     }
-
   },
   onLoad: function () {},
   getUserInfo: function (e) {
