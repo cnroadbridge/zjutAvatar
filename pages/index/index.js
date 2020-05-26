@@ -105,6 +105,13 @@ Page({
                   wx.saveImageToPhotosAlbum({
                     filePath: res.tempFilePath,
                   });
+                  wx.showToast({
+                    title: '保存头像成功！',
+                    icon: 'none',
+                    image: '',
+                    duration: 1500,
+                    mask: false,
+                  });
                 },
                 fail: function (res) {
                   console.log(res);
@@ -134,6 +141,13 @@ Page({
             success: (res) => {
               wx.saveImageToPhotosAlbum({
                 filePath: res.tempFilePath,
+              });
+              wx.showToast({
+                title: '保存头像成功！',
+                icon: 'none',
+                image: '',
+                duration: 1500,
+                mask: false,
               });
             },
             fail: function (res) {
