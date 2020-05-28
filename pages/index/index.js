@@ -7,20 +7,92 @@ Page({
     todo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     selectedImage: null,
-    currentPhotoFrames: null,
+    currentNewPhotoFrames: null,
+    canvasTempFilePath: null,
     userInfo: {},
-    photoFrames: [
-      '../images/zjut-1.png',
-      '../images/zjut-2.png',
-      '../images/zjut-3.png',
-      '../images/zjut-4.png',
-      '../images/zjut-5.png'
-    ],
+    newPhotoFrames: [{
+        url: '../images/zjut-round-1.png',
+        type: 1
+      },
+      {
+        url: '../images/zjut-round-2.png',
+        type: 1
+      },
+      {
+        url: '../images/zjut-round-3.png',
+        type: 1
+      },
+      {
+        url: '../images/zjut-round-4.png',
+        type: 1
+      },
+      {
+        url: '../images/zjut-round-5.png',
+        type: 1
+      },
+      {
+        url: '../images/zjut-round-6.png',
+        type: 2
+      },
+      {
+        url: '../images/zjut-round-7.png',
+        type: 2
+      },
+      {
+        url: '../images/zjut-rect-3.png',
+        type: 2
+      },
+      {
+        url: '../images/zjut-rect-5.png',
+        type: 3
+      },
+      {
+        url: '../images/zjut-rect-6.png',
+        type: 3
+      },
+      {
+        url: '../images/zjut-rect-7.png',
+        type: 3
+      },
+      {
+        url: '../images/zjut-rect-8.png',
+        type: 3
+      },
+      {
+        url: '../images/zjut-rect-9.png',
+        type: 3
+      },
+      {
+        url: '../images/zjut-1.png',
+        type: 4
+      },
+      {
+        url: '../images/zjut-2.png',
+        type: 4
+      },
+      {
+        url: '../images/zjut-heart-2.png',
+        type: 5
+      },
+      {
+        url: '../images/zjut-heart-3.png',
+        type: 5
+      },
+      {
+        url: '../images/zjut-rect-2.png',
+        type: 5
+      },
+      {
+        url: '../images/zjut-rect-4.png',
+        type: 5
+      }
+    ]
   },
   setTodo: function () {
     if (this.data.selectedImage) {
       this.setData({
-        currentPhotoFrames: null,
+        cuurenNewPhotoFrames: null,
+        canvasTempFilePath: null,
         todo: !this.data.todo
       });
     } else {
@@ -73,92 +145,113 @@ Page({
     });
   },
   showPhotoFrames: function (e) {
+    const type = e.currentTarget.dataset.type;
+    const src = e.currentTarget.dataset.src;
     this.setData({
-      currentPhotoFrames: e.currentTarget.dataset.src
+      currentNewPhotoFrames: src
     });
+    if (type === 1) {
+      this.drawCanvas(26, 26, 130, 130);
+    } else if (type === 2) {
+      this.drawCanvas(12, 12, 160, 160);
+    } else if (type === 3) {
+      this.drawCanvas(0, 0, 180, 180);
+    } else if (type === 4) {
+      this.drawCanvas(8, 6, 164, 168);
+    } else if (type === 5) {
+      this.drawCanvas(16, 10, 150, 150);
+    }
   },
-  saveImage: function () {
-    if (this.data.currentPhotoFrames) {
-      if (this.data.selectedImage.startsWith('https://wx.qlogo.cn')) {
-        const currentPhotoFrames = this.data.currentPhotoFrames;
-        setTimeout(() => {
-          wx.downloadFile({
-            url: this.data.selectedImage,
-            success: function (res) {
-              let cvsCtx = wx.createCanvasContext('avatarCanvas');
-              cvsCtx.save();
-              cvsCtx.arc(90, 90, 70, 0, 2 * Math.PI);
-              cvsCtx.clip();
-              cvsCtx.drawImage(res.tempFilePath, 33, 30, 118, 118);
-              cvsCtx.restore();
-              cvsCtx.drawImage(currentPhotoFrames, 0, 0, 180, 180);
-              cvsCtx.draw();
-              wx.canvasToTempFilePath({
-                width: 180,
-                heght: 180,
-                destWidth: 720,
-                destHeight: 720,
-                canvasId: 'avatarCanvas',
-                fileType: 'jpg',
-                quality: 1,
-                success: (res) => {
-                  wx.saveImageToPhotosAlbum({
-                    filePath: res.tempFilePath,
-                  });
-                  wx.showToast({
-                    title: '保存头像成功！',
-                    icon: 'none',
-                    image: '',
-                    duration: 1500,
-                    mask: false,
-                  });
-                },
-                fail: function (res) {
-                  console.log(res);
-                }
-              });
-            }
-          });
-        }, 100);
-      } else {
-        setTimeout(() => {
-          let cvsCtx = wx.createCanvasContext('avatarCanvas');
-          cvsCtx.save();
-          cvsCtx.arc(90, 90, 70, 0, 2 * Math.PI);
-          cvsCtx.clip();
-          cvsCtx.drawImage(this.data.selectedImage, 33, 30, 118, 118);
-          cvsCtx.restore();
-          cvsCtx.drawImage(this.data.currentPhotoFrames, 0, 0, 180, 180);
-          cvsCtx.draw();
-          wx.canvasToTempFilePath({
-            width: 180,
-            heght: 180,
-            destWidth: 720,
-            destHeight: 720,
-            canvasId: 'avatarCanvas',
-            fileType: 'jpg',
-            quality: 1,
-            success: (res) => {
-              wx.saveImageToPhotosAlbum({
-                filePath: res.tempFilePath,
-              });
-              wx.showToast({
-                title: '保存头像成功！',
-                icon: 'none',
-                image: '',
-                duration: 1500,
-                mask: false,
-              });
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          });
-        }, 100);
-      }
+  drawCanvas: function (ix, iy, iw, ih) {
+    let that = this;
+    const currentNewPhotoFrames = this.data.currentNewPhotoFrames;
+    const selectedImage = this.data.selectedImage
+    if (this.data.selectedImage.startsWith('https://wx.qlogo.cn')) {
+      setTimeout(() => {
+        wx.downloadFile({
+          url: this.data.selectedImage,
+          success: function (res) {
+            let cvsCtx = wx.createCanvasContext('avatarCanvas');
+            cvsCtx.save();
+            cvsCtx.rect(0, 0, 180, 180, );
+            cvsCtx.clip();
+            cvsCtx.drawImage(res.tempFilePath, ix, iy, iw, ih);
+            cvsCtx.restore();
+            cvsCtx.drawImage(currentNewPhotoFrames, 0, 0, 180, 180);
+            cvsCtx.draw();
+            wx.canvasToTempFilePath({
+              width: 180,
+              heght: 180,
+              destWidth: 720,
+              destHeight: 720,
+              canvasId: 'avatarCanvas',
+              fileType: 'jpg',
+              quality: 1,
+              success: (res) => {
+                that.setData({
+                  canvasTempFilePath: res.tempFilePath
+                });
+              },
+              fail: function (res) {
+                console.log(res);
+              }
+            });
+          }
+        });
+      }, 100);
+    } else {
+      setTimeout(() => {
+        let cvsCtx = wx.createCanvasContext('avatarCanvas');
+        cvsCtx.save();
+        cvsCtx.rect(0, 0, 180, 180);
+        cvsCtx.clip();
+        cvsCtx.drawImage(selectedImage, ix, iy, iw, ih);
+        cvsCtx.restore();
+        cvsCtx.drawImage(currentNewPhotoFrames, 0, 0, 180, 180);
+        cvsCtx.draw();
+        wx.canvasToTempFilePath({
+          width: 180,
+          heght: 180,
+          destWidth: 720,
+          destHeight: 720,
+          canvasId: 'avatarCanvas',
+          fileType: 'jpg',
+          quality: 1,
+          success: (res) => {
+            that.setData({
+              canvasTempFilePath: res.tempFilePath
+            });
+          },
+          fail: function (res) {
+            console.log(res);
+          }
+        });
+      }, 100);
+    }
+  },
+  saveNewImage: function () {
+    if (this.data.canvasTempFilePath) {
+      wx.saveImageToPhotosAlbum({
+        filePath: this.data.canvasTempFilePath,
+      });
+      wx.showToast({
+        title: '保存头像成功！',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+      });
+    } else if (!this.data.currentNewPhotoFrames) {
+      wx.showToast({
+        title: '请先选择相框再保存哦！',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+      });
     } else {
       wx.showToast({
-        title: '请先选择相框',
+        title: '系统繁忙，请稍后操作！',
         icon: 'none',
         image: '',
         duration: 1500,
@@ -172,7 +265,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {

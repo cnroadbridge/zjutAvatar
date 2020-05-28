@@ -41,7 +41,7 @@
 
 .selectedImage {
   z-index: -1;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   width: 250rpx;
   height: 250rpx;
   position: absolute;
@@ -57,7 +57,7 @@
 }
 
 .avatar-cover {
-  background-color: rgba(235, 233, 233, .9);
+  background-color: rgba(209, 220, 237, .4);
   border-radius: 16rpx;
   display: flex;
   flex-direction: row;
@@ -66,7 +66,7 @@
 }
 
 .tip {
-  color: rgb(157, 156, 156);
+  color: rgb(154, 156, 160);
 }
 
 .operate {
@@ -96,9 +96,9 @@
 
 .btn {
   border-radius: 50rpx;
-  background-color: rgba(223, 223, 223, .8);
-  color: rgba(141, 139, 139);
-  font-weight: normal;
+  background-color: rgba(216, 218, 221, .8);
+  color: rgb(176, 177, 179);
+  font-weight: bold;
   display: flex;
   flex-basis: 70%;
   flex-direction: row;
@@ -108,7 +108,7 @@
 
 .btn-fix {
   flex-basis: 88%;
-  background-color: rgba(73, 123, 169);
+  background-color: rgba(68, 120, 167);
   color: #fff;
 }
 

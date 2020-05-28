@@ -4,9 +4,8 @@
     <image class="zjut-avatar" src="../images/zjut-avatar.png"></image>
   </view>
   <view class="content">
-    <view wx:if="{{ currentPhotoFrames }}" class="result" hover-class="none" hover-stop-propagation="false">
-       <image  class="userinfo-avatar" src="{{ currentPhotoFrames }}"mode="aspectFit"></image>
-       <image  class="selectedImage" src="{{ selectedImage }}" mode="aspectFill"></image>
+    <view wx:if="{{ canvasTempFilePath }}" class="result" hover-class="none" hover-stop-propagation="false">
+       <image  class="userinfo-avatar" src="{{ canvasTempFilePath }}"mode="aspectFit"></image>
     </view>
     <image wx:elif="{{ selectedImage }}" class="userinfo-avatar" 
            src="{{ selectedImage }}"mode="cover">
@@ -20,9 +19,10 @@
   <view class="operate">
     <block wx:if="{{ todo }}">
       <scroll-view class="scroll-box" scroll-x="true">
-         <block wx:for="{{ photoFrames }}" wx:key="key" >
+          <block wx:for="{{ newPhotoFrames }}" wx:key="key" >
             <view class="photo-box">
-              <image class="photo" src="{{ item }}" data-src="{{ item }}" bindtap="showPhotoFrames"></image>
+              <image class="photo" src="{{ item.url }}" data-src="{{ item.url }}" 
+                     data-type="{{ item.type }}" bindtap="showPhotoFrames"></image>
             </view>
          </block>
       </scroll-view>
@@ -33,7 +33,7 @@
       </view>
        <view class="btn-group">
         <view class="btn-box">
-          <button class="btn" bindtap="saveImage" hover-class="none">保存</button>
+          <button class="btn" bindtap="saveNewImage" hover-class="none">保存</button>
         </view>
         <view class="btn-box">
           <button class="btn" bindtap="setTodo" hover-class="none">返回</button>

@@ -47,6 +47,28 @@
 
 ![](images/show.gif)
 
+
+### 版本二
+
+首页
+
+<img src="images/show-8.jpg" width=35% height=35% />
+
+相应相框选择
+
+<img src="images/show-7.jpg" width=35% height=35% />
+
+<img src="images/show-9.jpg" width=35% height=35% />
+
+<img src="images/show-10.jpg" width=35% height=35% />
+
+<img src="images/show-11.jpg" width=35% height=35% />
+
+演示
+
+![](images/show2.gif)
+
+
 ## 知识点梳理
 
 ### 一些标签

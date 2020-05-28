@@ -4,7 +4,7 @@
 /**app.wxss**/
 page {
   height: 100%;
-  background-image: url('https://i.loli.net/2020/05/25/z2mqEpcg7UO4lNu.png');
+  background-image: url('https://i.loli.net/2020/05/28/K8NWjFpZkAnbaYE.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
 }
