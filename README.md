@@ -68,6 +68,16 @@
 
 ![](images/show2.gif)
 
+#### 版本三
+
+图一
+
+<img src="images/show-12.jpg" width=35% height=35% />
+
+图二
+
+<img src="images/show-13.jpg" width=35% height=35% />
+
 
 ## 知识点梳理
 
@@ -199,6 +209,43 @@
 
 [点击查看文档](https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips.html)
 
+
+#### 关于Access Token 
+
+* 手动获取Access Token
+
+* 自动刷新Access Token
+
+* 需提供AppId, AppSecret
+
+* 有效期两小时
+
+* 512空间字符
+
+* 有5分钟新旧Access Token 平滑过渡。
+
+[点击查看文档](https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-token/auth.getAccessToken.html)
+
+#### 关于云函数
+
+看官当文档很详细的，这里列几个点
+
+* 云函数初始化
+
+* 小程序端云函数初始化
+
+* 小程序端云函数调用
+
+* 云函数端访问数据库
+
+* 小程序端访问数据库
+
+* 云函数端访问外部接口
+
+[点击查看文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+
+
+
 ## 问题汇总：
 
 ### 微信小程序的大小限制
@@ -246,6 +293,18 @@ page {
 **解决方案：** 
 
 试了下`display`, `overflow`都不好使， 使用定位将其定位到小程序外面去，使用户看不到
+
+
+### UGC类小程序需要进行内容安全过滤
+
+```
+失败原因1
+审核失败原因存在平台未允许的服务内容，违反《微信小程序平台运营规范常见拒绝情形3.2》
+详情描述为避免您的小程序被滥用，请你完善内容审核机制，如调用小程序内容安全API，或使用其他技术、人工审核手段，过滤色情、违法等有害信息，保障发布内容的安全。
+```
+
+
+推荐使用微信官方接口和云函数开发
 
 ## 参考文献
 
