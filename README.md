@@ -79,6 +79,10 @@
 <img src="images/show-13.jpg" width=35% height=35% />
 
 
+上线啦
+
+![qrcode](./images/qrcode.jpg)
+
 ## 知识点梳理
 
 ### 一些标签
